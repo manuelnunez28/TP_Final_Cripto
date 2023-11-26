@@ -21,18 +21,18 @@ unsigned char celcius[5] = " °C";
 float temp;
 
 // WiFi 
-//const char *ssid = "Fibertel WiFi367 2.4GHz"; // Nombre WiFi
-//const char *password = "0141200866";  // Contraseña del WiFi
+//const unsigned char *ssid = "Fibertel WiFi367 2.4GHz"; // Nombre WiFi
+//const unsigned char *password = "0141200866";  // Contraseña del WiFi
 
-const char *ssid = "Moto G (5) Plus 6864";
-const char *password = "manuel123";
+const unsigned char *ssid = "Moto G (5) Plus 6864";
+const unsigned char *password = "manuel123";
 
 // MQTT Broker
-//const char *mqtt_broker = "192.168.0.248";
-const char *mqtt_broker = "192.168.255.99";
-const char *topic = "mosquitto/esp32";
-//const char *mqtt_username = "";
-//const char *mqtt_password = "";
+//const unsigned char *mqtt_broker = "192.168.0.248";
+const unsigned char *mqtt_broker = "192.168.255.99";
+const unsigned char *topic = "mosquitto/esp32";
+//const unsigned char *mqtt_username = "";
+//const unsigned char *mqtt_password = "";
 const int mqtt_port = 1883;
 
 WiFiClient espClient;
@@ -47,7 +47,7 @@ unsigned char npub[CRYPTO_NPUBBYTES]="";
 unsigned char ad[CRYPTO_ABYTES]="";
 unsigned char nsec[CRYPTO_ABYTES]="";
 
-const char ad2[CRYPTO_ABYTES]="";
+const unsigned char ad2[CRYPTO_ABYTES]="";
 
 unsigned char key[CRYPTO_KEYBYTES];
 
@@ -114,12 +114,12 @@ void loop() {
 }
 
 
-void callback(char *topic, byte *payload, unsigned int length) {
+void callback(unsigned char *topic, byte *payload, unsigned int length) {
     Serial.print("Message arrived in topic: ");
     Serial.println(topic);
     Serial.print("Message:");
     for (int i = 0; i < length; i++) {
-        Serial.print((char) payload[i]);
+        Serial.print((unsigned char) payload[i]);
     }
     Serial.println();
     Serial.println("-----------------------");
